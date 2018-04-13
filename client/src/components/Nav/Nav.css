@@ -1,0 +1,12 @@
+.navbar-inverse {
+    background-color: #0a6d38;
+    border-color: #080808;
+    -moz-user-focus: ignore
+}
+
+a:hover { background-color: #6fce77 !important; }
+
+.navbar-brand {
+    font-size: xx-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}

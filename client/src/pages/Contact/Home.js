@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import productsdata from "./productsdata";
+import Thumbnail from "../../components/Thumbnail/Thumbnail";
 
-class Books extends Component {
+class Home extends Component {
   state = {
+    productimages: [],
     books: [],
     title: "",
     author: "",
@@ -17,6 +20,15 @@ class Books extends Component {
 
   componentDidMount() {
     this.loadBooks();
+    this.loadImages();
+  }
+
+  loadImages = () => {
+    // this.state.productimages = productsdata.productimages;
+    this.setState({ productimages: productsdata.productimages}, function () {
+      console.log(this.state.productimages);
+    });
+
   }
 
   loadBooks = () => {
@@ -59,38 +71,23 @@ class Books extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h2>Products we sell !!</h2>
+              <p>authorized dealer for all the below products and we also provide service.</p>
             </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
+            <Col size="md-6">
+              {this.state.productimages.map( (image, index) => ((index%2)?(true):(<Thumbnail src={image.imgurl} imgcaption={image.imgcaption}/>))
+              )}
+            </Col>
+            <Col size="md-6">
+              {this.state.productimages.map( (image, index) => ((index%2)?( <Thumbnail src={image.imgurl} imgcaption={image.imgcaption}/>):(false))
+              )}
+            </Col>
+
+            
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h2>Latest news on farming, Agriculture </h2>
             </Jumbotron>
             {this.state.books.length ? (
               <List>
@@ -115,4 +112,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Home;
