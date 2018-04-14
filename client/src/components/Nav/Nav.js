@@ -5,7 +5,7 @@ const Nav = () => (
   <nav className="navbar navbar-inverse navbar-top">
     <div className="container-fluid">
       <div className="navbar-header">
-        <img src="./tiller.jpg" width="60" height="60" alt=""/>
+        <img src="../../images/tiller.jpg" width="60" height="60" style={{"border-radius":"50%"}} alt=""/>
         <button type="button" className="collapsed navbar-toggle">
           <span className="sr-only">Toggle navigation</span>
           <span className="icon-bar" /> 

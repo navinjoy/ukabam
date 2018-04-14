@@ -13,6 +13,7 @@ class Home extends Component {
   state = {
     productimages: [],
     books: [],
+    news:[],
     title: "",
     author: "",
     synopsis: ""
@@ -21,6 +22,7 @@ class Home extends Component {
   componentDidMount() {
     this.loadBooks();
     this.loadImages();
+    this.loadNews();
   }
 
   loadImages = () => {
@@ -38,6 +40,13 @@ class Home extends Component {
       )
       .catch(err => console.log(err));
   };
+
+  loadNews = () => {
+    API.getAgriNews()
+      .then(res => 
+        this.setState({ news: res.data.articles})
+      );
+  }
 
   deleteBook = id => {
     API.deleteBook(id)
@@ -89,16 +98,19 @@ class Home extends Component {
             <Jumbotron>
               <h2>Latest news on farming, Agriculture </h2>
             </Jumbotron>
-            {this.state.books.length ? (
+            {this.state.news.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
+                {this.state.news.map(newsitem => (
+                  <ListItem key={newsitem.url}>
+                  <a href={newsitem.url} target="_blank">
+                    <img src={newsitem.urlToImage} alt={newsitem.title} style={{height:"100%",width:"150px" }} />
+                  
+                      <strong style={{height:"100%", "margin-left":"2%"}}>
+                        {newsitem.title}
                       </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+
+                      
+                      </a>
                   </ListItem>
                 ))}
               </List>
