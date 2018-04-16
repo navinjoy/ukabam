@@ -1,0 +1,51 @@
+[
+        {
+            "name": "Jammula Someswar Rao",
+            "designation": "Managing Director",
+            "description": "Customer satisfaction and providing great service to them is the motto.",
+            "imgurl":"../../../images/teampics/SomeswarRao.png"
+        },
+        {
+            "name": "Jammula Kiran Kumar",
+            "designation": "Managing Partner",
+            "description": "this is a sample description, this is a sample description",
+            "imgurl":"../../../images/teampics/Kiran.png"
+        },
+        {
+            "name": "Jammula Navin Kumar",
+            "designation": "Managing Partner",
+            "description": "this is a sample description, this is a sample description",
+            "imgurl":"../../../images/teampics/Navin.png"
+        },
+        {
+            "name": "LN Patro",
+            "designation": "Manager",
+            "description": "this is a sample description, this is a sample description",
+            "imgurl":""
+        },
+        {
+            "name": "Krishno",
+            "designation": "Spares Manager",
+            "description": "this is a sample description, this is a sample description",
+            "imgurl":""
+        },
+        {
+            "name": "Employee 5",
+            "designation": "Mechanic",
+            "description": "this is a sample description, this is a sample description",
+            "imgurl":""
+        },
+        {
+            "name": "Employee 6",
+            "designation": "Accounts Manager",
+            "description": "",
+            "imgurl":""
+        },
+        {
+            "name": "Employee 7",
+            "designation": "Mechanic",
+            "description": "this is a sample description",
+            "imgurl":""
+        }
+
+    ]
