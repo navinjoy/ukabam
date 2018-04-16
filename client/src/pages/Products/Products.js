@@ -8,7 +8,7 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import productsdata from "./productsdata";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
-import {Carousel, Image} from "react-bootstrap";
+import {Carousel, Image, Table, Panel} from "react-bootstrap";
 
 class Products extends React.Component {
   constructor(props, context) {
@@ -29,7 +29,7 @@ class Products extends React.Component {
 
   loadImages = () => {
     // this.state.productimages = productsdata.productimages;
-    this.setState({ products: productsdata.productimages}, function () {
+    this.setState({ products: productsdata.products}, function () {
       console.log(this.state.productimages);
     });
 
@@ -48,22 +48,54 @@ class Products extends React.Component {
 
     return (
       <Row>
-        <Col size="md-6">
-          <Carousel>
+        <Col size="md-4">
+        <Panel bsStyle="success">
+    <Panel.Heading>
+      <Panel.Title componentClass="h3" >Order your Product now</Panel.Title>
+    </Panel.Heading>
+    <Panel.Body>
+        <Table responsive>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Cost</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  {this.state.products.map(product => (
+    <tr>
+      <td>{product.name}</td>
+      <td>{"₹ "+product.cost}</td>
+      <td><a href={product.buyroute} class="btn btn-success" role="button">Order Now</a></td>
+    </tr>
+  ))}
+  </tbody>
+</Table>
+</Panel.Body>
+  </Panel>
+        </Col>
+
+        <Col size="md-4">
+        <Panel bsStyle="success">
+    <Panel.Heading>
+      <Panel.Title componentClass="h3" >Products</Panel.Title>
+    </Panel.Heading>
+    <Panel.Body>
+          <Carousel style={{height:"500px", alignContent:"center"}}>
             {this.state.products.map(product => (
             <Carousel.Item>
               {/* <Image src={product.imgurl} responsive /> */}
-              <img height={"200"} src={product.imgurl} />
-              <Carousel.Caption>
-                <h3>{product.imgcaption}</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </Carousel.Caption>
+              <img src={product.imgurl} style={{width:"100%","max-height":"500px","object-fit":"contain"}}/>
+              
             </Carousel.Item>
             ))
           }
           </Carousel>
+        </Panel.Body>
+  </Panel>
         </Col>
-        <Col size="md-6">
+        <Col size="md-4">
         </Col>
       </Row>
     );

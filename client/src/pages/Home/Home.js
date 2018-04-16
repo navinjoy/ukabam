@@ -108,8 +108,6 @@ class Home extends Component {
                       <strong style={{height:"100%", "margin-left":"2%"}}>
                         {newsitem.title}
                       </strong>
-
-                      
                       </a>
                   </ListItem>
                 ))}

@@ -19,5 +19,8 @@ export default {
   },
   getAgriNews: function() {
     return axios.get("/api/news");
+  },
+  saveComment: function(commentData) {
+    return axios.post("/api/comment", commentData);;
   }
 };

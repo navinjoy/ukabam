@@ -2,10 +2,12 @@ import React from "react";
 import "./Profilepic.css"
 const Profilepic = props => (
   <div className="thumbnail">
-    <img src={props.src} id="pic"/>
+    <img src={props.src} id="pic" style={{"border-radius":"30%", "width":"200px", "height":"200px"}}/>
     <div class="caption">
         <h4>{props.name}</h4>
-        <p>{props.role}</p>
+        <h5>{props.role}</h5>
+        {/* <hr></hr> */}
+        <p>{props.description}</p>
     </div>
     {props.children}
   </div>

@@ -1,26 +1,39 @@
 module.exports = {
-    productimages: [
+    products: [
         {
+            name:"VST Shakti 135 Di Power Tiller",
+            cost:"123,000.99",
+            buyroute:"powertiller",
             imgcaption: "VST Shakti 135 Di Power Tiller",
-            imgurl:"https://5.imimg.com/data5/RH/YR/MY-49620689/vst-power-tiller-500x500.jpg"
+            imgurl:"../../../images/productpics/PowerTiller.png"
         },
         {
+            name:"VST Shakti Tractor 270 MT",
+            cost:"234,000.99",
+            buyroute:"tractor",
             imgcaption: "VST Shakti Tractor 270 MT",
-            imgurl:"https://4.imimg.com/data4/MU/UK/MY-16694292/4x4-four-wheel-drive-tractor-500x500.jpg"
+            imgurl:"../../../images/productpics/Tractor.png"
         },
         {
+            name:"VST Shakti Power Reaper",
+            cost:"135,009.99",
+            buyroute:"powerreaper",
             imgcaption: "VST Shakti Power Reaper",
-            imgurl:"https://5.imimg.com/data5/TQ/HA/MY-28361531/vst-shakti-5pr-power-reaper-500x500.jpg"
+            imgurl:"../../../images/productpics/PowerReaper.png"
         },
         {
-            imgcaption: "VST Shakti Power Transplanter",
-            imgurl:"https://5.imimg.com/data5/SM/SM/MY-15747168/rice-transplanter-2-500x500.jpg"
+            name:"VST Shakti Rotary Tiller",
+            cost:"111,222.88",
+            buyroute:"rotarytiller",
+            imgcaption: "VST Shakti Rotary Tiller",
+            imgurl:"../../../images/productpics/rotaryTiller.png"
         },
         {
-            imgcaption: "VST Shakti Tractor All in One",
-            imgurl:"https://5.imimg.com/data5/PG/HG/MY-28361531/vst-shakti-mt-270-viraat-4w-tractor-500x500.jpg"
+            name:"VST Shakti Transplanter",
+            cost:"101,456.00",
+            buyroute:"transplanter",
+            imgcaption: "VST Shakti Transplanter",
+            imgurl:"../../../images/productpics/transplanter.png"
         }
     ]
 }
-
-//https://5.imimg.com/data5/PG/HG/MY-28361531/vst-shakti-mt-270-viraat-4w-tractor-500x500.jpg   

@@ -9,10 +9,12 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import Profilepic from "../../components/Profilepic/Profilepic";
 import Profiledesc from "../../components/Profiledesc/Profiledesc";
+import teaminfo from "./teaminfo.json";
 
 class About extends Component {
   state = {
     productimages: [],
+    teaminfo: teaminfo,
     books: [],
     title: "",
     author: "",
@@ -62,6 +64,7 @@ class About extends Component {
     return (
       <Container fluid>
         <Row>
+          
           <Col size="md-12">
             <Jumbotron>
               
@@ -72,33 +75,18 @@ class About extends Component {
           </Col>
       
         </Row>
+        
         <Row>
-          <Col size="md-2">
-            <Profilepic src="../../../images/NavinPic.png" name="Navin Kumar" role="Managing Partner"/>
+          <Row>
+        {this.state.teaminfo.map(teammember => (
+          <Col size="md-2 sm-4">
+          <Profilepic src={teammember.imgurl} name={teammember.name} role={teammember.designation.toUpperCase()} description={teammember.description}/>
           </Col>
-          <Col size="md-10">
-            <Profiledesc desc="is simply dummy text of the printing is simply dummy text of the printing is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          is simply dummy text of the is simply dummy text of the printing is simply dummy text of the printing  printing and typesetting industry."/>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Profilepic src="../../../images/NavinPic.png" name="Navin Kumar" role="Managing Partner"/>
-          </Col>
-          <Col size="md-10">
-            <Profiledesc desc="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          is simply dummy text of the printing and typesetting industry."/>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Profilepic src="../../../images/NavinPic.png" name="Navin Kumar" role="Managing Partner"/>
-          </Col>
-          <Col size="md-10">
-            <Profiledesc desc="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          is simply dummy text of the printing and typesetting industry."/>
-          </Col>
-        </Row>
+        )
+      )}
+      </Row>
+      </Row>
+      
       </Container>
     );
   }

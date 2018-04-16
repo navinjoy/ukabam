@@ -1,8 +1,9 @@
 import React from "react";
 import "./Profiledesc.css"
+
 const Profiledesc = props => (
   <div className="thumbnail">
-    <div class="caption">
+    <div className="caption">
         <p style={{"text-align": "justify"}}>{props.desc}</p>
     </div>
     {props.children}

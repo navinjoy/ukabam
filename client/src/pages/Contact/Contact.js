@@ -8,19 +8,22 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import productsdata from "./productsdata";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
+import Modaldlg from "../../components/Modaldlg/Modaldlg";
 
 class Contact extends Component {
-  state = {
-    productimages: [],
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      emailorphone: "",
+      comments: "",
+      showDlg: false
+    };
+  }
 
   componentDidMount() {
-    this.loadBooks();
-    this.loadImages();
+    // this.loadBooks();
+    // this.loadImages();
   }
 
   loadImages = () => {
@@ -31,17 +34,30 @@ class Contact extends Component {
 
   }
 
+  handleCommentSubmitted = (res) => {
+    console.log("*****",res);
+    this.setState({
+      name: "",
+      emailorphone: "",
+      comments: "",
+      showDlg: true});
+  }
+
+  handleModalOpen = () => {
+    this.setState({
+      showDlg: true});
+  }
+
+  handleModalClose = () => {
+    this.setState({
+      showDlg: false});
+  }
+
   loadBooks = () => {
     API.getBooks()
       .then(res =>
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
       )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
 
@@ -54,14 +70,14 @@ class Contact extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+    if (this.state.name && this.state.comments && this.state.emailorphone) {
+      API.saveComment({
+        name: this.state.name,
+        emailorphone: this.state.emailorphone,
+        comments: this.state.comments
       })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
+      .then(res => this.handleCommentSubmitted(res))
+      .catch(err => console.log(err));
     }
   };
 
@@ -74,11 +90,36 @@ class Contact extends Component {
               <h2>Contact Us</h2>
               
             </Jumbotron>
-            <Col size="md-6">
-            
-            </Col>
-
-            
+            <form>
+              <Input
+                value={this.state.name}
+                onChange={this.handleInputChange}
+                name="name"
+                placeholder="Name (required)"
+              />
+              <Input
+                value={this.state.emailorphone}
+                onChange={this.handleInputChange}
+                name="emailorphone"
+                placeholder="Email or Phone (required)"
+              />
+              <TextArea
+                value={this.state.comments}
+                onChange={this.handleInputChange}
+                name="comments"
+                placeholder="Comments (required)"
+              />
+              <FormBtn
+                disabled={!(this.state.name && this.state.comments && this.state.emailorphone)}
+                onClick={this.handleFormSubmit}
+              >
+                Submit Comment
+              </FormBtn>
+              {
+                this.state.showDlg &&
+                <Modaldlg show={this.state.showDlg}  onClose={this.handleModalClose} onOpen={this.handleModalOpen}/>                
+              }
+              </form>            
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
