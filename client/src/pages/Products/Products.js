@@ -8,7 +8,9 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import productsdata from "./productsdata";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
-import {Carousel, Image, Table, Panel} from "react-bootstrap";
+import {Carousel, Image, Table, Panel, Alert} from "react-bootstrap";
+import ModalFormDlg from "../../components/ModalFormDlg/ModalFormDlg";
+
 
 class Products extends React.Component {
   constructor(props, context) {
@@ -19,6 +21,9 @@ class Products extends React.Component {
     this.state = {
       products: [],
       index: 0,
+      showFormDlg: false,
+      productOrderedName:"",
+      productOrderedCost:"",
       direction: null
     };
   }
@@ -43,6 +48,31 @@ class Products extends React.Component {
     });
   }
 
+  handleModalOpen = () => {
+    this.setState({showFormDlg: true});
+  }
+
+  handleModalClose = () => {
+    this.setState({showFormDlg: false});
+  }
+
+  getproductnameandcost (element) {
+    const clickedBtnId = element.currentTarget.id.split("_")[2];    
+    let product = {};
+    product.name = document.getElementById("td_productname_"+clickedBtnId).innerText;
+    product.cost = document.getElementById("td_productcost_"+clickedBtnId).innerText;
+    return product;
+  }
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    const product = this.getproductnameandcost(event);
+
+    console.log(product, "Order Now clicked!!");
+    this.setState({showFormDlg:true, productOrderedName:product.name, productOrderedCost: product.cost});
+  };
+
+
   render() {
     const { index, direction } = this.state;
 
@@ -63,15 +93,25 @@ class Products extends React.Component {
     </tr>
   </thead>
   <tbody>
-  {this.state.products.map(product => (
+  {this.state.products.map((product, index) => (
     <tr>
-      <td>{product.name}</td>
-      <td>{"₹ "+product.cost}</td>
-      <td><a href={product.buyroute} class="btn btn-success" role="button">Order Now</a></td>
+      <td id={"td_productname_"+index}>{product.name}</td>
+      <td id={"td_productcost_"+index}>{"₹ "+product.cost}</td>
+      <td>
+        <FormBtn
+          id={"td_submitbtn_"+index}
+          onClick={this.handleFormSubmit}
+              >Order Now
+        </FormBtn>
+      </td>
     </tr>
   ))}
   </tbody>
 </Table>
+{
+  this.state.showFormDlg &&
+  <ModalFormDlg show={this.state.showFormDlg}  onClose={this.handleModalClose} onOpen={this.handleModalOpen} productName={this.state.productOrderedName} productCost={this.state.productOrderedCost}/>
+}
 </Panel.Body>
   </Panel>
         </Col>
@@ -96,6 +136,33 @@ class Products extends React.Component {
   </Panel>
         </Col>
         <Col size="md-4">
+        <Panel bsStyle="success">
+    <Panel.Heading>
+      <Panel.Title componentClass="h3" >Product Quality Standards</Panel.Title>
+    </Panel.Heading>
+    <Panel.Body>
+    <Alert bsStyle="warning">
+  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
+  good.
+</Alert>
+<Alert bsStyle="warning">
+  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
+  good.
+</Alert>
+<Alert bsStyle="warning">
+  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
+  good.
+</Alert>
+<Alert bsStyle="warning">
+  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
+  good.
+</Alert>
+<Alert bsStyle="warning">
+  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
+  good.
+</Alert>
+    </Panel.Body>
+    </Panel>
         </Col>
       </Row>
     );

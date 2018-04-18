@@ -22,5 +22,8 @@ export default {
   },
   saveComment: function(commentData) {
     return axios.post("/api/comment", commentData);;
+  },
+  submitProductOrder: function(productOrderData) {
+    return axios.post("/api/productorder", productOrderData);;
   }
 };

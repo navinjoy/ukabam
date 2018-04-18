@@ -101,14 +101,20 @@ class Home extends Component {
             {this.state.news.length ? (
               <List>
                 {this.state.news.map(newsitem => (
-                  <ListItem key={newsitem.url}>
-                  <a href={newsitem.url} target="_blank">
-                    <img src={newsitem.urlToImage} alt={newsitem.title} style={{height:"100%",width:"150px" }} />
                   
+                  <ListItem key={newsitem.url}>
+                  <Row>
+                  <a href={newsitem.url} target="_blank">
+                    
+                      <img src={newsitem.urlToImage} alt={newsitem.title} style={{height:"100px",width:"150px" }} />
+                      
+                
                       <strong style={{height:"100%", "margin-left":"2%"}}>
                         {newsitem.title}
                       </strong>
+                      
                       </a>
+                    </Row>
                   </ListItem>
                 ))}
               </List>
