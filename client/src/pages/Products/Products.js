@@ -10,6 +10,7 @@ import productsdata from "./productsdata";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import {Carousel, Image, Table, Panel, Alert} from "react-bootstrap";
 import ModalFormDlg from "../../components/ModalFormDlg/ModalFormDlg";
+import Modaldlg from "../../components/Modaldlg/Modaldlg";
 
 
 class Products extends React.Component {
@@ -22,6 +23,7 @@ class Products extends React.Component {
       products: [],
       index: 0,
       showFormDlg: false,
+      showOrderConfirmDlg: false,
       productOrderedName:"",
       productOrderedCost:"",
       direction: null
@@ -54,6 +56,18 @@ class Products extends React.Component {
 
   handleModalClose = () => {
     this.setState({showFormDlg: false});
+  }
+
+  handleOrderConfirmClose = () => {
+    this.setState({showOrderConfirmDlg: false})
+  }
+
+  handleOrderConfirmShow = () => {
+    this.setState({showOrderConfirmDlg: true})
+  }
+
+  handleOrderPlaced = () => {
+    this.setState({showOrderConfirmDlg: true})
   }
 
   getproductnameandcost (element) {
@@ -110,12 +124,29 @@ class Products extends React.Component {
 </Table>
 {
   this.state.showFormDlg &&
-  <ModalFormDlg show={this.state.showFormDlg}  onClose={this.handleModalClose} onOpen={this.handleModalOpen} productName={this.state.productOrderedName} productCost={this.state.productOrderedCost}/>
+  <ModalFormDlg 
+    show={this.state.showFormDlg}  
+    onOrderPlaced={this.handleOrderPlaced} 
+    onFormDlgClose={this.handleModalClose} 
+    onFormDlgOpen={this.handleModalOpen} 
+    productName={this.state.productOrderedName} 
+    productCost={this.state.productOrderedCost}
+  />
+}
+{
+  this.state.showOrderConfirmDlg &&
+  <Modaldlg 
+    show={this.state.showOrderConfirmDlg}  
+    onClose={this.handleOrderConfirmClose} 
+    onOpen={this.handleOrderConfirmShow}
+    headerTitle={"Order Placed Successfully"}
+    bodyTitle={"Congratulations, your order has been successfully placed."}
+    bodyMessage={"Our sales representative will reach out to you, Have a nice day !!"}
+  />                
 }
 </Panel.Body>
   </Panel>
         </Col>
-
         <Col size="md-4">
         <Panel bsStyle="success">
     <Panel.Heading>

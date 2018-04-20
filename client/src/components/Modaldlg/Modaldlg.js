@@ -27,12 +27,12 @@ class Modaldlg extends React.Component {
         <div>  
           <Modal show={this.props.show} onHide={this.handleClose} >
             <Modal.Header closeButton>
-              <Modal.Title>Comment Posted Successfully</Modal.Title>
+              <Modal.Title>{this.props.headerTitle}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <h4>Your Comment has been posted successfully. Thank you!</h4>
+              <h4>{this.props.bodyTitle}</h4>
               <p>
-                We will get back to you soon. Have a nice day !!
+                {this.props.bodyMessage}
               </p>
             </Modal.Body>
             <Modal.Footer style={{"display": "flex", "justify-content": "center"}}>

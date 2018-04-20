@@ -117,7 +117,14 @@ class Contact extends Component {
               </FormBtn>
               {
                 this.state.showDlg &&
-                <Modaldlg show={this.state.showDlg}  onClose={this.handleModalClose} onOpen={this.handleModalOpen}/>                
+                <Modaldlg 
+                  show={this.state.showDlg}  
+                  onClose={this.handleModalClose} 
+                  onOpen={this.handleModalOpen}
+                  headerTitle={"Comment Posted Successfully"}
+                  bodyTitle={"Your Comment has been posted successfully. Thank you!"}
+                  bodyMessage={"We will get back to you soon. Have a nice day !!"}
+                  />                
               }
               </form>            
           </Col>

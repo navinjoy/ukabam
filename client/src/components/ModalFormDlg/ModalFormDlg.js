@@ -4,6 +4,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import {DropdownButton, MenuItem, ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 import API from "../../utils/API";
 
+
 class ModalFormDlg extends React.Component {
     constructor(props, context) {
       super(props, context);
@@ -18,17 +19,19 @@ class ModalFormDlg extends React.Component {
         showDlg: false
       };
   
-      this.handleShow = this.handleShow.bind(this);
-      this.handleClose = this.handleClose.bind(this);
+      this.handleModalFormShow = this.handleModalFormShow.bind(this);
+      this.handleModalFormClose = this.handleModalFormClose.bind(this);
     }
   
-    handleClose() {
-      this.props.onClose();
+    handleModalFormClose() {
+      this.props.onFormDlgClose();
     }
   
-    handleShow() {
-        this.props.onOpen();
+    handleModalFormShow() {
+        this.props.onFormDlgOpen();
     }
+
+
 
     handleProductOrderSubmitted = (res) => {
    
@@ -42,7 +45,9 @@ class ModalFormDlg extends React.Component {
         productName: "",
         productCost:"",
         quantity: 0
-      });
+      })
+      this.handleModalFormClose();
+      this.props.onOrderPlaced();
     }
 
     handleSubmit = event => {
@@ -56,13 +61,10 @@ class ModalFormDlg extends React.Component {
           email: this.state.email,
           phone: this.state.phone,
           address: this.state.address,
-          paymentType: "Cash"         
+          paymentType: "Cash"
         })
         .then(res => this.handleProductOrderSubmitted(res))
         .catch(err => console.log(err));
-        console.log(this.state);
-        // this.handleClose();
-        alert('Order Submitted')
       }
     }
     
@@ -76,7 +78,7 @@ class ModalFormDlg extends React.Component {
     componentDidMount() {
       this.state.productName = this.props.productName;
       this.state.productCost = this.props.productCost;
-      this.handleShow();
+      this.handleModalFormShow();
     }
 
     handleChange(e) {
@@ -87,7 +89,7 @@ class ModalFormDlg extends React.Component {
 
       return (
         <div>  
-          <Modal show={this.props.show} onHide={this.handleClose} >
+          <Modal show={this.props.show} onHide={this.handleModalFormClose} >
             <Modal.Header>
               <Modal.Title>PRODUCT ORDER FORM</Modal.Title>
             </Modal.Header>
@@ -153,11 +155,12 @@ class ModalFormDlg extends React.Component {
               </form>  
             </Modal.Body>
             <Modal.Footer style={{"display": "flex", "justify-content": "center"}}>
-              <Button bsStyle="default" onClick={this.handleClose}>Cancel</Button>
+              <Button bsStyle="default" onClick={this.handleModalFormClose}>Cancel</Button>
             
               <Button bsStyle="success" onClick={this.handleSubmit}>Submit</Button>
             </Modal.Footer>
           </Modal>
+
         </div>
       );
     }
