@@ -1,17 +1,10 @@
-import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import React from "react";
+import { Col, Row} from "../../components/Grid";
+import { FormBtn } from "../../components/Form";
 import productsdata from "./productsdata";
-import Thumbnail from "../../components/Thumbnail/Thumbnail";
-import {Carousel, Image, Table, Panel, Alert} from "react-bootstrap";
+import {Carousel, Table, Panel, Alert} from "react-bootstrap";
 import ModalFormDlg from "../../components/ModalFormDlg/ModalFormDlg";
 import Modaldlg from "../../components/Modaldlg/Modaldlg";
-
 
 class Products extends React.Component {
   constructor(props, context) {
@@ -35,7 +28,6 @@ class Products extends React.Component {
   }
 
   loadImages = () => {
-    // this.state.productimages = productsdata.productimages;
     this.setState({ products: productsdata.products}, function () {
       console.log(this.state.productimages);
     });
@@ -43,7 +35,6 @@ class Products extends React.Component {
   }
 
   handleSelect(selectedIndex, e) {
-    // alert(`selected=${selectedIndex}, direction=${e.direction}`);
     this.setState({
       index: selectedIndex,
       direction: e.direction
@@ -88,8 +79,6 @@ class Products extends React.Component {
 
 
   render() {
-    const { index, direction } = this.state;
-
     return (
       <Row>
         <Col size="md-4">
@@ -157,7 +146,7 @@ class Products extends React.Component {
             {this.state.products.map(product => (
             <Carousel.Item>
               {/* <Image src={product.imgurl} responsive /> */}
-              <img src={product.imgurl} style={{width:"100%","max-height":"500px","object-fit":"contain"}}/>
+              <img src={product.imgurl} alt={product.imgcaption} style={{width:"100%","max-height":"500px","object-fit":"contain"}}/>
               
             </Carousel.Item>
             ))
@@ -199,7 +188,5 @@ class Products extends React.Component {
     );
   }
 }
-
-// render(<ControlledCarousel />);
 
 export default Products;

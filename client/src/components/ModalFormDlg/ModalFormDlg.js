@@ -1,9 +1,8 @@
 import React from "react";
-import {Modal, Button, Forms, FormGroup, ControlLabel, FormControl, HelpBlock, ButtonToolbar} from 'react-bootstrap';
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import {DropdownButton, MenuItem, ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
+import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
+import { Input } from "../../components/Form";
+import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import API from "../../utils/API";
-
 
 class ModalFormDlg extends React.Component {
     constructor(props, context) {
@@ -30,8 +29,6 @@ class ModalFormDlg extends React.Component {
     handleModalFormShow() {
         this.props.onFormDlgOpen();
     }
-
-
 
     handleProductOrderSubmitted = (res) => {
    
@@ -76,8 +73,9 @@ class ModalFormDlg extends React.Component {
     };
 
     componentDidMount() {
-      this.state.productName = this.props.productName;
-      this.state.productCost = this.props.productCost;
+      this.setState({productName:this.props.productName, productCost: this.props.productCost});
+      // this.state.productName = this.props.productName;
+      // this.state.productCost = this.props.productCost;
       this.handleModalFormShow();
     }
 
@@ -165,6 +163,5 @@ class ModalFormDlg extends React.Component {
       );
     }
   }
-  
-//   render(<Example />);
+
 export default ModalFormDlg;

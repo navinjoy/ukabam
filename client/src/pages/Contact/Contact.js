@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import productsdata from "./productsdata";
-import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import Modaldlg from "../../components/Modaldlg/Modaldlg";
 
 class Contact extends Component {
@@ -27,7 +23,6 @@ class Contact extends Component {
   }
 
   loadImages = () => {
-    // this.state.productimages = productsdata.productimages;
     this.setState({ productimages: productsdata.productimages}, function () {
       console.log(this.state.productimages);
     });

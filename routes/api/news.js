@@ -12,14 +12,8 @@ router.route("/")
         page: 1,
         pageSize: 10
       }).then(response => {
-        console.log(response);
-        res.json(response)
-        /*
-          {
-            status: "ok",
-            articles: [...]
-          }
-        */
+        // console.log(response);
+        res.json(response);
       })
       .catch(err => res.status(422).json(err))
     )
