@@ -1,7 +1,7 @@
 import React from "react";
 import "./Profilepic.css"
 const Profilepic = props => (
-  <div className="thumbnail">
+  <div className="thumbnail" style={{"height":"400px"}}>
     <img src={props.src} id="pic" style={{"border-radius":"30%", "width":"200px", "height":"200px"}}/>
     <div class="caption">
         <h4>{props.name}</h4>
