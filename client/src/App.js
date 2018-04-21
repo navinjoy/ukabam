@@ -9,20 +9,24 @@ import Logout from "./pages/Logout";
 
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const App = () => (
   <Router>
     <div>
       <Nav />
       <Switch>
+      {/* <div style={{"paddingBottom":"60px"}}> */}
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/contact" component={Contact} />
         {/* <Route exact path="/auth/login" component={Login} />
         <Route exact path="/auth/logout" component={Logout} /> */}
-        {/* <Route component={NoMatch} /> */}
+        <Route component={NoMatch} />
       </Switch>
+      {/* </div > */}
+      <Footer/>
     </div>
   </Router>
 );

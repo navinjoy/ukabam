@@ -22,8 +22,8 @@ const Nav = () => (
         <li><a href="/products">Products</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/auth/google">Sign In with Google</a></li>
-        <li><a href="/auth/logout">Logout</a></li>
-        <li><a href="/auth/login">Login</a></li>
+        {/* <li><a href="/auth/logout">Logout</a></li>
+        <li><a href="/auth/login">Login</a></li> */}
       </ul>
     </div>
   </nav>

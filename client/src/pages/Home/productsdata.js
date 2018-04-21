@@ -14,7 +14,7 @@ module.exports = {
         },
         {
             imgcaption: "VST Shakti Power Transplanter",
-            imgurl:"https://5.imimg.com/data5/SM/SM/MY-15747168/rice-transplanter-2-500x500.jpg"
+            imgurl:"https://i.ytimg.com/vi/GzRwxX1-ryU/hqdefault.jpg"
         }
     ]
 }

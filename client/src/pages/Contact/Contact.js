@@ -3,8 +3,8 @@ import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import productsdata from "./productsdata";
 import Modaldlg from "../../components/Modaldlg/Modaldlg";
+import {Table, Panel, Alert} from "react-bootstrap";
 
 class Contact extends Component {
   constructor(props) {
@@ -15,18 +15,6 @@ class Contact extends Component {
       comments: "",
       showDlg: false
     };
-  }
-
-  componentDidMount() {
-    // this.loadBooks();
-    // this.loadImages();
-  }
-
-  loadImages = () => {
-    this.setState({ productimages: productsdata.productimages}, function () {
-      console.log(this.state.productimages);
-    });
-
   }
 
   handleCommentSubmitted = (res) => {
@@ -47,14 +35,6 @@ class Contact extends Component {
     this.setState({
       showDlg: false});
   }
-
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -127,7 +107,80 @@ class Contact extends Component {
             <Jumbotron>
               <h2>Other Info</h2>
             </Jumbotron>
-            
+            <Col size="md-6 sm-12">
+            <Panel bsStyle="success">
+              <Panel.Heading >
+                <Panel.Title componentClass="h3" >OFFICE LOCATION </Panel.Title>
+              </Panel.Heading>
+              <Panel.Body>
+                <Alert bsStyle="warning">
+                  {/* <strong>LOCATION</strong> */}
+                  <h3>Usha Kiran Agencies</h3>
+                  <p>Aska Road Berhampur</p>
+                  <p>Odisha India 760002</p>
+                  <p>Phone : 0680 6451625</p>
+                  <hr></hr>
+                  <p>Mobile : +91 90400 81090</p>
+                  <p>email : ukabam7@gmail.com</p>
+                  <hr></hr>
+                  <p>Website: <a href='http://ukabam.herokuapp.com'>www.ushakiranagencies.com</a></p>
+                </Alert>
+              </Panel.Body>
+            </Panel>
+            </Col>
+            <Col size="md-6 sm-12">
+            <Panel bsStyle="success">
+              <Panel.Heading>
+                <Panel.Title componentClass="h3" >BUSINESS HOURS </Panel.Title>
+              </Panel.Heading>
+              <Panel.Body>
+                <Alert bsStyle="warning">
+                <Table striped bordered condensed hover>
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Monday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Monday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Tuesday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Wednesday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Thursday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Friday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Saturday</td>
+                      <td>10 A.M. - 8 P.M.</td>
+                    </tr>
+                    <tr>
+                      <td>Sunday</td>
+                      <td>10 A.M. - 2 P.M.</td>
+                    </tr>
+                  </tbody>
+                </Table> 
+                </Alert>
+              </Panel.Body>
+            </Panel>
+            </Col>
           </Col>
         </Row>
       </Container>

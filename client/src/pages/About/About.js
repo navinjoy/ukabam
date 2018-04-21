@@ -70,7 +70,7 @@ class About extends Component {
       
         </Row>
         
-        <Row>
+        
           <Row>
         {this.state.teaminfo.map(teammember => (
           <Col size="md-2 sm-4">
@@ -79,7 +79,7 @@ class About extends Component {
         )
       )}
       </Row>
-      </Row>
+     
       
       </Container>
     );

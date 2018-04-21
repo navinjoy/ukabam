@@ -1,10 +1,18 @@
 h3 {
-    text-align: center
+    text-align: center;
+    font-size: large;
 }
 
+.thumbnail {
+    height:250px;
+    width: auto;
+    /* background-color: rgb(188, 220, 169) */
+    
+}
 .thumbnail>img {
-    height:60%;
-    width:60%;
+    height:70%;
+    width: auto;
+    /* width:60%; */
     max-width: 100%;
     max-height: 100%;
 }

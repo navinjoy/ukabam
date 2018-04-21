@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const passport      = require('passport');
+
 // module.exports = function (app, passport) {
-    router.get('/google', (req, res) => {
+    router.get('/auth/google', (req, res) => {
         console.log('google auth')
         res.send("logging with google")
     })
@@ -11,11 +13,11 @@ const router = require('express').Router();
         res.render('login');
     })
 
-    // router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    //     res.redirect('/');
+    router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+        res.redirect('/');
 
-    //     res.send("you reached the callback URI")
-    // })
+        res.send("you reached the callback URI")
+    })
 
     router.get('/logout', (req, res) => {
         req.logout();

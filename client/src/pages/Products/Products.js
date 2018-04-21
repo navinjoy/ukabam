@@ -158,20 +158,17 @@ class Products extends React.Component {
         <Col size="md-4">
         <Panel bsStyle="success">
     <Panel.Heading>
-      <Panel.Title componentClass="h3" >Product Quality Standards</Panel.Title>
+      <Panel.Title componentClass="h3" >Product Quality and Customer Service Standards</Panel.Title>
     </Panel.Heading>
     <Panel.Body>
     <Alert bsStyle="warning">
-  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
-  good.
+  <strong>The goal as a company</strong> is to have customer service that is not just the best, but legendary
 </Alert>
 <Alert bsStyle="warning">
-  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
-  good.
+  <strong>A customer service</strong> apology is stronger with a personal touch.
 </Alert>
 <Alert bsStyle="warning">
-  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
-  good.
+  <strong>A customer</strong> is the most important visitor on our premises. He is not dependent on us – we are dependent on him. 
 </Alert>
 <Alert bsStyle="warning">
   <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
