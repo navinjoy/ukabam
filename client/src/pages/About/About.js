@@ -74,7 +74,7 @@ class About extends Component {
           <Row>
         {this.state.teaminfo.map(teammember => (
           <Col size="md-2 sm-4">
-          <Profilepic src={teammember.imgurl} name={teammember.name} role={teammember.designation.toUpperCase()} description={teammember.description}/>
+            <Profilepic src={teammember.imgurl} name={teammember.name} role={teammember.designation.toUpperCase()} description={teammember.description}/>
           </Col>
         )
       )}

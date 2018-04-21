@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import productsdata from "./productsdata";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
+import {Panel} from "react-bootstrap";
 
 class Home extends Component {
   state = {
@@ -17,7 +18,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks();
+    // this.loadBooks();
     this.loadImages();
     this.loadNews();
   }
@@ -72,6 +73,26 @@ class Home extends Component {
   render() {
     return (
       <Container fluid>
+            {/* <Row>
+        <Col size="md-4">
+          <Panel bsStyle="success">
+            <Panel.Heading>
+              <Panel.Title componentClass="h3" >Login to the App</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>
+              <nav>
+                <ul>
+                  <li><a href="/auth/logout">Logout</a></li>
+                  <li><a href="/auth/login">Login</a></li>
+                  <li><a href="/">Home</a></li>
+                </ul>
+              </nav>
+              <hr></hr>
+              <a class="google-btn" href="/auth/google">Sign In with Google</a>
+            </Panel.Body>
+          </Panel>
+        </Col>
+      </Row> */}
         <Row>
           <Col size="md-6">
             <Jumbotron>
@@ -79,11 +100,11 @@ class Home extends Component {
               <p>authorized dealer for all the below products and we also provide service.</p>
             </Jumbotron>
             <Col size="md-6">
-              {this.state.productimages.map( (image, index) => ((index%2)?(true):(<Thumbnail src={image.imgurl} imgcaption={image.imgcaption}/>))
+              {this.state.productimages.map( (image, index) => ((index%2)?(true):(<Thumbnail key={image.imgurl} src={image.imgurl} imgcaption={image.imgcaption}/>))
               )}
             </Col>
             <Col size="md-6">
-              {this.state.productimages.map( (image, index) => ((index%2)?( <Thumbnail src={image.imgurl} imgcaption={image.imgcaption}/>):(false))
+              {this.state.productimages.map( (image, index) => ((index%2)?( <Thumbnail key={image.imgurl} src={image.imgurl} imgcaption={image.imgcaption}/>):(false))
               )}
             </Col>
 
@@ -104,7 +125,7 @@ class Home extends Component {
                       <img src={newsitem.urlToImage} alt={newsitem.title} style={{height:"100px",width:"150px" }} />
                       
                 
-                      <strong style={{height:"100%", "margin-left":"2%"}}>
+                      <strong style={{height:"100%", "marginLeft":"2%"}}>
                         {newsitem.title}
                       </strong>
                       

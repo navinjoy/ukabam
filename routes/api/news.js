@@ -12,7 +12,7 @@ router.route("/")
         page: 1,
         pageSize: 10
       }).then(response => {
-        // console.log(response);
+        console.log("**** News fetch successful ****");
         res.json(response);
       })
       .catch(err => res.status(422).json(err))
