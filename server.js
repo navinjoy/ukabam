@@ -40,7 +40,7 @@ app.use('/auth', authRoutes);
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/ukabamdb",
+  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
   {
     useMongoClient: true
   }
